@@ -14,8 +14,7 @@ const styles = {
   },
   field: {
     flex: 1,
-    marginLeft: "2px",
-    marginRight: "10px",
+    marginLeft: "10px",
   },
   icon: {
     padding: "10px",
@@ -24,16 +23,38 @@ const styles = {
 
 class SearchInput extends React.Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      value: "",
+    }
+
+    this.inputChange = this.inputChange.bind(this);
+  }
+
+  inputChange(event) {
+    this.setState({ value: event.target.value });
+  }
+
   render() {
     return (
+      // Main Container
       <Paper style = { styles.paper } >
-        <IconButton style = { styles.icon } >
-          <SearchIcon/>
-        </IconButton>
+        {/* Input Field */}
         <InputBase
           style = { styles.field }
-          placeholder="Pencarian"
+          placeholder = "Pencarian"
+          onChange = { this.inputChange }
         />
+
+        {/* Search Button */}
+        <IconButton
+          // type = "submit"
+          style = { styles.icon }
+          onClick = { () => this.props.onSearch( this.state.value ) }
+        >
+          <SearchIcon/>
+        </IconButton>
       </Paper>
     );
   }

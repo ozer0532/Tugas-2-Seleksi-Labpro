@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+// import './App.css';
 
 import Box from '@material-ui/core/Box'
 import Container from '@material-ui/core/Container'
@@ -16,16 +16,27 @@ const styles = {
   }
 };
 
-function App() {
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
 
-  return (
-    <Box style = { styles.root }>
-      <Container>
+    }
+  }
 
-        <SearchInput />
-      </Container>
-    </Box>
-  );
+  onSearch(text) {
+    alert(text);
+  }
+
+  render() {
+    return (
+      <Box style = { styles.root }>
+        <Container>
+          <SearchInput onSearch = { this.onSearch } />
+        </Container>
+      </Box>
+    );
+  }
 }
 
 export default App;
