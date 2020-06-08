@@ -49,7 +49,6 @@ class SearchInput extends React.Component {
 
         {/* Search Button */}
         <IconButton
-          // type = "submit"
           style = { styles.icon }
           onClick = { () => this.props.onSearch( this.state.value ) }
         >

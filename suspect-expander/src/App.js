@@ -5,6 +5,7 @@ import React from 'react';
 import Box from '@material-ui/core/Box'
 import Container from '@material-ui/core/Container'
 
+import GetData from './getData'
 import SearchInput from './searchInput'
 
 const styles = {
@@ -24,8 +25,8 @@ class App extends React.Component {
     }
   }
 
-  onSearch(text) {
-    alert(text);
+  async onSearch(text) {
+    console.log(await GetData(parseInt(text)));
   }
 
   render() {
