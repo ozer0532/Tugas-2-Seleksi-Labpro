@@ -14,7 +14,7 @@ export async function GetData (index) {
 
 // Get all person from API
 export async function GetAllPerson () {
-    var list = await TraverseGraphLoop (graphStartPoint, []);
+    let list = await TraverseGraphLoop (graphStartPoint, []);
     return list;
 }
 
@@ -28,12 +28,12 @@ async function TraverseGraphLoop (id, currentList) {
 
     // Get Friends List
     const response = await GetData(id);
-    var list = currentList;
+    let list = currentList;
     if (response.status === 200)  {
         // Save name in currentList
         // console.log(list.filter(e => e.id === id)[0]);
         currentList.push({id: id, name: response.payload.name});
-        var friends = response.payload.friends;
+        let friends = response.payload.friends;
         for (let i = 0; i < friends.length; i++) {
             list = await TraverseGraphLoop(friends[i].id, list);
             // console.log (friends[i].id);
