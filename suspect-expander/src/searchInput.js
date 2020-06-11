@@ -30,10 +30,18 @@ class SearchInput extends React.Component {
     }
 
     this.inputChange = this.inputChange.bind(this);
+    this.onEnterPressed = this.onEnterPressed.bind(this);
   }
 
   inputChange(event) {
     this.setState({ value: event.target.value });
+  }
+
+  // https://stackoverflow.com/questions/43384039/how-to-get-input-textfield-values-when-enter-key-is-pressed-in-react-js
+  onEnterPressed (event) {
+    if (event.keyCode === 13) {
+      this.props.onEnterPressed( this.state.value );
+    }
   }
 
   render() {
@@ -45,6 +53,7 @@ class SearchInput extends React.Component {
           style = { styles.field }
           placeholder = "Pencarian"
           onChange = { this.inputChange }
+          onKeyDown = { this.onEnterPressed }
         />
 
         {/* Search Button */}

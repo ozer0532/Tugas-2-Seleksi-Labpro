@@ -19,6 +19,20 @@ const styles = {
   },
 }
 
+function FilterFriends (friendsList) {
+  let filtered = friendsList
+
+  // Filter duplicates https://stackoverflow.com/questions/2218999/remove-duplicates-from-an-array-of-objects-in-javascript
+  filtered = filtered.filter((entry, index) => {
+    let stringEntry = JSON.stringify(entry);
+    return index === filtered.findIndex((item) => {
+      return stringEntry === JSON.stringify(item)
+    });
+  })
+
+  return filtered;
+}
+
 class DataDisplayer extends React.Component {
 
   constructor(props) {
@@ -30,10 +44,10 @@ class DataDisplayer extends React.Component {
   }
 
   RenderElements (props) {
-    if (props.data == null || props.data.name === "-") {
+    if (props.data == null || props.data.name === "-" || this.props.searching) {
       return "";
     } else if ("element" in props.data) {
-      return "Elemen: " + props.data.element;
+      return (<React.Fragment>Elemen: <i>{ props.data.element }</i></React.Fragment>);
     } else {
       return "Elemen: N/A";
     }
@@ -57,7 +71,7 @@ class DataDisplayer extends React.Component {
   }
 
   RenderFriends () {
-    if (this.props.data.name === "-") {
+    if (this.props.data.name === "-" || this.props.searching) {
       return "";
     } else if ("friends" in this.props.data && this.props.data.friends.length > 0) {
       return (
@@ -66,7 +80,7 @@ class DataDisplayer extends React.Component {
             Rekan: 
           </Typography>
           {
-            this.props.data.friends.map((entry, index) => {
+            FilterFriends(this.props.data.friends).map((entry, index) => {
               return (
                 <Box key = { index }>
                   <this.RenderFriend 
@@ -89,27 +103,49 @@ class DataDisplayer extends React.Component {
   }
 
   render () {
-    return (
-      <Box style = { styles.mainContainer }>
-        {/* Top Row */}
-        <Typography 
-          variant='subtitle1' 
-          color="textSecondary" 
-        >
-          Hasil Pencarian:
-        </Typography>
-        <Typography variant='h5'>
-          { this.props.data.name }
-        </Typography>
-        <Typography style = { styles.spaced }>
-          <this.RenderElements data = { this.props.data } />
-        </Typography>
-
-        <Divider style = { styles.spaced } />
-        {/* Bottom Row (Friends) */}
-        { this.RenderFriends() }
-      </Box>
-    );
+    if (this.props.searching) {
+      return (
+        <Box style = { styles.mainContainer }>
+          {/* Top Row */}
+          <Typography 
+            variant='subtitle1' 
+            color="textSecondary" 
+          >
+            Hasil Pencarian:
+          </Typography>
+          <Typography variant='h5'>
+            Mencari...
+          </Typography>
+          <Typography style = { styles.spaced }>
+            {/* Nothing */}
+          </Typography>
+  
+          <Divider style = { styles.spaced } />
+        </Box>
+      );
+    } else {
+      return (
+        <Box style = { styles.mainContainer }>
+          {/* Top Row */}
+          <Typography 
+            variant='subtitle1' 
+            color="textSecondary" 
+          >
+            Hasil Pencarian:
+          </Typography>
+          <Typography variant='h5'>
+            { this.props.data.name }
+          </Typography>
+          <Typography style = { styles.spaced }>
+            <this.RenderElements data = { this.props.data } />
+          </Typography>
+  
+          <Divider style = { styles.spaced } />
+          {/* Bottom Row (Friends) */}
+          { this.RenderFriends() }
+        </Box>
+      );
+    }
   }
 }
 

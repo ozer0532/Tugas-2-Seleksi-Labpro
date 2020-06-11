@@ -44,6 +44,7 @@ class App extends React.Component {
         name: "-",
         friends: [],
       },
+      searching: false,
     };
     this.GetPersonList = this.GetPersonList.bind(this);
     this.onSearch = this.onSearch.bind(this);
@@ -59,6 +60,7 @@ class App extends React.Component {
 
   async onSearch(text) {
     // Wait until all found https://stackoverflow.com/questions/16149431/make-function-wait-until-element-exists
+    this.setState({ searching: true });
     let checkExist = setInterval(async () => {
       if (this.state.personList.length > 0) {
         console.log("Exists!");
@@ -69,6 +71,7 @@ class App extends React.Component {
         if (foundList.length > 0) {
           let collectedData = await GetData(foundList[0].id);
           console.log(collectedData);
+          this.setState({ searching: false });
           this.setState({
             currentPerson: collectedData.payload,
           });
@@ -84,12 +87,18 @@ class App extends React.Component {
       <Box style = { styles.root }>
         <Box style = { styles.searchContainer }>
           <Container>
-            <SearchInput onSearch = { this.onSearch } />
+            <SearchInput 
+              onSearch = { this.onSearch } 
+              onEnterPressed = { this.onSearch }
+            />
           </Container>
         </Box>
         <Grid container spacing={0} style = { styles.mainContainer }>
           <Grid item xs={12} md={4} lg={3} style = {styles.dataContainer}>
-            <DataDisplayer data = { this.state.currentPerson } />
+            <DataDisplayer 
+              data = { this.state.currentPerson } 
+              searching = { this.state.searching } 
+            />
           </Grid>
           <Grid item xs={12} md={8} lg={9} style = { styles.graphContainer }>
             
