@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid'
 import { GetData, GetAllPerson } from './getData'
 import SearchInput from './searchInput'
 import DataDisplayer from './dataDisplayer';
+import GraphDisplayer from './graphDisplayer';
 
 const styles = {
   root: {
@@ -29,6 +30,7 @@ const styles = {
   },
   graphContainer: {
     background: '#fff',
+    height: '100%',
   },
   displayerContainer: {
   }
@@ -101,7 +103,7 @@ class App extends React.Component {
             />
           </Grid>
           <Grid item xs={12} md={8} lg={9} style = { styles.graphContainer }>
-            
+            <GraphDisplayer />
           </Grid>
         </Grid>
       </Box>
