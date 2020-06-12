@@ -41,6 +41,7 @@ class DataDisplayer extends React.Component {
     this.RenderElements = this.RenderElements.bind(this);
     this.RenderFriend = this.RenderFriend.bind(this);
     this.RenderFriends = this.RenderFriends.bind(this);
+    this.SearchText = this.SearchText.bind(this);
   }
 
   RenderElements (props) {
@@ -71,7 +72,7 @@ class DataDisplayer extends React.Component {
   }
 
   RenderFriends () {
-    if (this.props.data.name === "-" || this.props.searching) {
+    if (this.props.data.name === "-" || this.props.searching || this.props.fail) {
       return "";
     } else if ("friends" in this.props.data && this.props.data.friends.length > 0) {
       return (
@@ -102,11 +103,10 @@ class DataDisplayer extends React.Component {
     }
   }
 
-  render () {
+  SearchText () {
     if (this.props.searching) {
       return (
-        <Box style = { styles.mainContainer }>
-          {/* Top Row */}
+        <React.Fragment>
           <Typography 
             variant='subtitle1' 
             color="textSecondary" 
@@ -119,14 +119,28 @@ class DataDisplayer extends React.Component {
           <Typography style = { styles.spaced }>
             {/* Nothing */}
           </Typography>
-  
-          <Divider style = { styles.spaced } />
-        </Box>
+        </React.Fragment>
+      )
+    } else if (this.props.fail) {
+      return (
+        <React.Fragment>
+          <Typography 
+            variant='subtitle1' 
+            color="textSecondary" 
+          >
+            Hasil Pencarian:
+          </Typography>
+          <Typography variant='h5'>
+            Orang tidak ditemukan
+          </Typography>
+          <Typography style = { styles.spaced }>
+            {/* Nothing */}
+          </Typography>
+        </React.Fragment>
       );
     } else {
       return (
-        <Box style = { styles.mainContainer }>
-          {/* Top Row */}
+        <React.Fragment>
           <Typography 
             variant='subtitle1' 
             color="textSecondary" 
@@ -139,13 +153,22 @@ class DataDisplayer extends React.Component {
           <Typography style = { styles.spaced }>
             <this.RenderElements data = { this.props.data } />
           </Typography>
-  
-          <Divider style = { styles.spaced } />
-          {/* Bottom Row (Friends) */}
-          { this.RenderFriends() }
-        </Box>
+        </React.Fragment>
       );
     }
+  }
+
+  render () {
+    return (
+      <Box style = { styles.mainContainer }>
+        {/* Top Row */}
+        { this.SearchText() }
+
+        <Divider style = { styles.spaced } />
+        {/* Bottom Row (Friends) */}
+        { this.RenderFriends() }
+      </Box>
+    );
   }
 }
 

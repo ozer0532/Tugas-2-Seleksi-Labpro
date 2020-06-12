@@ -47,9 +47,17 @@ class App extends React.Component {
         friends: [],
       },
       searching: false,
+      fail: false,
+      graphData: {
+        nodes: [
+          { id: "0", name: "-", x: -100, y: -100 }  // Dummy data so renderer wouldn't crash
+        ],
+        links: [],
+      }
     };
     this.GetPersonList = this.GetPersonList.bind(this);
     this.onSearch = this.onSearch.bind(this);
+    this.updateGraphData = this.updateGraphData.bind(this);
 
     this.GetPersonList();
   }
@@ -65,7 +73,6 @@ class App extends React.Component {
     this.setState({ searching: true });
     let checkExist = setInterval(async () => {
       if (this.state.personList.length > 0) {
-        console.log("Exists!");
         clearInterval(checkExist);
          
         // Get person
@@ -73,15 +80,62 @@ class App extends React.Component {
         if (foundList.length > 0) {
           let collectedData = await GetData(foundList[0].id);
           console.log(collectedData);
-          this.setState({ searching: false });
-          this.setState({
+
+          // Update data
+          this.setState({ 
+            searching: false,
             currentPerson: collectedData.payload,
+            fail: false,
           });
+          this.setState({
+            
+          });
+          this.updateGraphData()
         } else {
-          console.log("Not Found: " + text);
+          this.setState({ 
+            searching: false,
+            fail: true,
+          });
         }
       }
     }, 100);
+  }
+
+  updateGraphData() {
+    let graphData = this.state.graphData;
+    // Check if current person not already exist in graph
+    if (graphData.nodes.find( item => { return item.id === this.state.currentPerson.id } ) === undefined) {
+
+      // Insert current person node
+      graphData.nodes.push({
+        id: this.state.currentPerson.id,
+        name: this.state.currentPerson.name,
+      })
+    }
+
+    // Check for all friends if not already exist
+    this.state.currentPerson.friends.forEach((friend, index) => {
+      if (graphData.nodes.find( item => { return item.id === friend.id } ) === undefined) {
+
+        // Insert friend node
+        graphData.nodes.push({
+          id: friend.id,
+          name: friend.name,
+        });
+      }
+
+      // Insert link if not already exist
+      let linkData = {
+        source: this.state.currentPerson.id,
+        target: friend.id,
+      };
+      if (graphData.links.find( item => { return (item.source === linkData.source) && (item.target === linkData.target) } ) === undefined) {
+        graphData.links.push(linkData);
+      }
+    })
+
+    this.setState({ graphData: graphData });
+    console.log(this.state);
   }
 
   render() {
@@ -100,10 +154,11 @@ class App extends React.Component {
             <DataDisplayer 
               data = { this.state.currentPerson } 
               searching = { this.state.searching } 
+              fail = { this.state.fail }
             />
           </Grid>
           <Grid item xs={12} md={8} lg={9} style = { styles.graphContainer }>
-            <GraphDisplayer />
+            <GraphDisplayer data = { this.state.graphData } />
           </Grid>
         </Grid>
       </Box>
