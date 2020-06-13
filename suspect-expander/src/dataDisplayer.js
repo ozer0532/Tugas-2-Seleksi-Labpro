@@ -38,19 +38,21 @@ class DataDisplayer extends React.Component {
   constructor(props) {
     super(props);
 
-    this.RenderElements = this.RenderElements.bind(this);
+    this.RenderIdElements = this.RenderIdElements.bind(this);
     this.RenderFriend = this.RenderFriend.bind(this);
     this.RenderFriends = this.RenderFriends.bind(this);
     this.SearchText = this.SearchText.bind(this);
   }
 
-  RenderElements (props) {
+  RenderIdElements (props) {
     if (props.data == null || props.data.name === "-" || this.props.searching) {
       return "";
-    } else if ("element" in props.data) {
-      return (<React.Fragment>Elemen: <i>{ props.data.element }</i></React.Fragment>);
     } else {
-      return "Elemen: N/A";
+      return (<React.Fragment> 
+          { "Id: " + props.data.id + " " }
+          Elemen: <i>{ props.data.element }</i>
+        </React.Fragment>
+      );
     }
   }
 
@@ -66,8 +68,7 @@ class DataDisplayer extends React.Component {
         <Typography variant = 'h6'>
           { props.entry.name }
         </Typography>
-        { "Id: " + props.entry.id + " " }
-        <this.RenderElements data = { props.entry } />
+        <this.RenderIdElements data = { props.entry } />
       </Card>
     );
   }
@@ -152,7 +153,7 @@ class DataDisplayer extends React.Component {
             { this.props.data.name }
           </Typography>
           <Typography style = { styles.spaced }>
-            <this.RenderElements data = { this.props.data } />
+            <this.RenderIdElements data = { this.props.data } />
           </Typography>
         </React.Fragment>
       );

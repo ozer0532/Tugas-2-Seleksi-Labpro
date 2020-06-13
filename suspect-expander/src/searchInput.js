@@ -51,7 +51,7 @@ class SearchInput extends React.Component {
         {/* Input Field */}
         <InputBase
           style = { styles.field }
-          placeholder = "Pencarian"
+          placeholder = "Pencarian - Masukkan nama lengkap atau id"
           onChange = { this.inputChange }
           onKeyDown = { this.onEnterPressed }
         />
