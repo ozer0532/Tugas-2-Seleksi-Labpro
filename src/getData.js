@@ -9,11 +9,9 @@ const graphStartPoint = "1"
 // Get friends data from an index
 export async function GetData (index) {
     const p = PlatformPath.join(apiURL, friendsAPI, index);
-    // const response = await fetch(p);
     const response = await axios.get(p);
+    console.log(response.data);
     return response.data;
-    // return await response.json();
-    // return await axios.get(p);
 }
 
 // Get all person from API
