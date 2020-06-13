@@ -1,14 +1,14 @@
 import PlatformPath from 'path';
+import url from 'url';
 import axios from 'axios';
 
-const apiURL = "https://avatar.labpro.dev/"
-const friendsAPI = "friends/"
+const apiURL = "https://avatar.labpro.dev/friends/"
 const graphStartPoint = "1"
 
 // Based on: https://malcoded.com/posts/react-http-requests-axios/
 // Get friends data from an index
 export async function GetData (index) {
-    const p = PlatformPath.join(apiURL, friendsAPI, index);
+    const p = url.resolve(apiURL, index);
     const response = await axios.get(p);
     console.log(response.data);
     return response.data;
