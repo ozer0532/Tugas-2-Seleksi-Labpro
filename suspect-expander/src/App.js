@@ -181,7 +181,10 @@ class App extends React.Component {
             />
           </Grid>
           <Grid item xs={12} md={8} lg={9} style = { styles.graphContainer }>
-            <GraphDisplayer data = { this.state.graphData } />
+            <GraphDisplayer 
+              data = { this.state.graphData } 
+              onClick = { this.onSearch }
+            />
           </Grid>
         </Grid>
       </Box>

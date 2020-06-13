@@ -25,6 +25,7 @@ var myConfig = {
     color: "lightgreen",
     size: 120,
     highlightStrokeColor: "blue",
+    labelProperty: "name",
   },
   link: {
     highlightColor: "lightblue",
@@ -36,10 +37,6 @@ var myConfig = {
 // graph event callbacks
 const onClickGraph = function() {
   // window.alert(`Clicked the graph background`);
-};
-
-const onClickNode = function(nodeId) {
-  // window.alert(`Clicked node ${nodeId}`);
 };
 
 const onDoubleClickNode = function(nodeId) {
@@ -85,6 +82,8 @@ class GraphDisplayer extends React.Component {
     this.state = {
       config: myConfig,
     }
+
+    this.onClickNode = this.onClickNode.bind(this);
   }
 
   componentDidMount() {
@@ -106,6 +105,13 @@ class GraphDisplayer extends React.Component {
     );
   };
 
+  onClickNode (nodeId) {
+    if (typeof this.props.onClick === "function") {
+      console.log("yes");
+      this.props.onClick(nodeId);
+    }
+  };
+
   render() {
     return (
       <Box 
@@ -122,7 +128,7 @@ class GraphDisplayer extends React.Component {
           }}
           // data = { this.props.data }
           config={this.state.config}
-          onClickNode={onClickNode}
+          onClickNode={this.onClickNode}
           onDoubleClickNode={onDoubleClickNode}
           onRightClickNode={onRightClickNode}
           onClickGraph={onClickGraph}
