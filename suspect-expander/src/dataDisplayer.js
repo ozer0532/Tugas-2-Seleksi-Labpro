@@ -66,6 +66,7 @@ class DataDisplayer extends React.Component {
         <Typography variant = 'h6'>
           { props.entry.name }
         </Typography>
+        { "Id: " + props.entry.id + " " }
         <this.RenderElements data = { props.entry } />
       </Card>
     );

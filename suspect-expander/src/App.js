@@ -50,7 +50,7 @@ class App extends React.Component {
       fail: false,
       graphData: {
         nodes: [
-          { id: "0", name: "-", x: -100, y: -100 }  // Dummy data so renderer wouldn't crash
+          { id: "0", name: "-", x: -100, y: -100 }  // Dummy data so graph renderer wouldn't crash
         ],
         links: [],
       }
@@ -58,8 +58,6 @@ class App extends React.Component {
     this.GetPersonList = this.GetPersonList.bind(this);
     this.onSearch = this.onSearch.bind(this);
     this.updateGraphData = this.updateGraphData.bind(this);
-
-    this.GetPersonList();
   }
 
   async GetPersonList() {
@@ -69,8 +67,36 @@ class App extends React.Component {
   }
 
   async onSearch(text) {
-    // Wait until all found https://stackoverflow.com/questions/16149431/make-function-wait-until-element-exists
+    // Reject if search is ongoing
+    if (this.state.searching) {
+      return;
+    }
     this.setState({ searching: true });
+
+    text = text.trim();
+    let parsedId = parseInt(text);
+    // Try parse as id first
+    if (!isNaN(parsedId)) {
+      let collectedData = await GetData(text);
+      // Check if data valid
+      if (collectedData.status === 200) {
+        this.setState({ 
+          searching: false,
+          currentPerson: collectedData.payload,
+          fail: false,
+        });
+        
+        this.updateGraphData()
+        return;
+      }
+    }
+
+    // Get person list if it does not exist yet
+    if (this.state.personList.length === 0) {
+      this.GetPersonList();
+    }
+
+    // Wait until all found https://stackoverflow.com/questions/16149431/make-function-wait-until-element-exists
     let checkExist = setInterval(async () => {
       if (this.state.personList.length > 0) {
         clearInterval(checkExist);
@@ -86,9 +112,6 @@ class App extends React.Component {
             searching: false,
             currentPerson: collectedData.payload,
             fail: false,
-          });
-          this.setState({
-            
           });
           this.updateGraphData()
         } else {
