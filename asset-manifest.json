@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/suspect-expander/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/suspect-expander/static/js/main.7eef6c02.chunk.js",
-    "main.js.map": "/suspect-expander/static/js/main.7eef6c02.chunk.js.map",
-    "runtime-main.js": "/suspect-expander/static/js/runtime-main.30d1a801.js",
-    "runtime-main.js.map": "/suspect-expander/static/js/runtime-main.30d1a801.js.map",
-    "static/js/2.b4f7c529.chunk.js": "/suspect-expander/static/js/2.b4f7c529.chunk.js",
-    "static/js/2.b4f7c529.chunk.js.map": "/suspect-expander/static/js/2.b4f7c529.chunk.js.map",
-    "index.html": "/suspect-expander/index.html",
-    "precache-manifest.f18e12c3f8eb595181058e2193cb4754.js": "/suspect-expander/precache-manifest.f18e12c3f8eb595181058e2193cb4754.js",
-    "service-worker.js": "/suspect-expander/service-worker.js",
-    "static/css/main.5ecd60fb.chunk.css.map": "/suspect-expander/static/css/main.5ecd60fb.chunk.css.map",
-    "static/js/2.b4f7c529.chunk.js.LICENSE.txt": "/suspect-expander/static/js/2.b4f7c529.chunk.js.LICENSE.txt"
+    "main.css": "/Tugas-2-Seleksi-Labpro/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/Tugas-2-Seleksi-Labpro/static/js/main.eb9312f2.chunk.js",
+    "main.js.map": "/Tugas-2-Seleksi-Labpro/static/js/main.eb9312f2.chunk.js.map",
+    "runtime-main.js": "/Tugas-2-Seleksi-Labpro/static/js/runtime-main.051170c7.js",
+    "runtime-main.js.map": "/Tugas-2-Seleksi-Labpro/static/js/runtime-main.051170c7.js.map",
+    "static/js/2.b4f7c529.chunk.js": "/Tugas-2-Seleksi-Labpro/static/js/2.b4f7c529.chunk.js",
+    "static/js/2.b4f7c529.chunk.js.map": "/Tugas-2-Seleksi-Labpro/static/js/2.b4f7c529.chunk.js.map",
+    "index.html": "/Tugas-2-Seleksi-Labpro/index.html",
+    "precache-manifest.dd4ce6dfee52a60367cf2dc24aab4b28.js": "/Tugas-2-Seleksi-Labpro/precache-manifest.dd4ce6dfee52a60367cf2dc24aab4b28.js",
+    "service-worker.js": "/Tugas-2-Seleksi-Labpro/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/Tugas-2-Seleksi-Labpro/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.b4f7c529.chunk.js.LICENSE.txt": "/Tugas-2-Seleksi-Labpro/static/js/2.b4f7c529.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.30d1a801.js",
+    "static/js/runtime-main.051170c7.js",
     "static/js/2.b4f7c529.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.7eef6c02.chunk.js"
+    "static/js/main.eb9312f2.chunk.js"
   ]
 }
