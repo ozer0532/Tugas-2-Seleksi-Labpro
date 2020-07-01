@@ -9,6 +9,7 @@ import SearchInput from './searchInput'
 import DataDisplayer from './dataDisplayer';
 import GraphDisplayer from './graphDisplayer';
 
+// CSS-like styling
 const styles = {
   root: {
     display: "flex",
@@ -39,6 +40,8 @@ const styles = {
 class App extends React.Component {
   constructor(props) {
     super(props);
+
+    // Initialize state data
     this.state = {
       personList: [],
       currentPerson: {
@@ -55,17 +58,23 @@ class App extends React.Component {
         links: [],
       }
     };
+
+    // Bind methods
     this.GetPersonList = this.GetPersonList.bind(this);
     this.onSearch = this.onSearch.bind(this);
     this.updateGraphData = this.updateGraphData.bind(this);
   }
 
+  // Get a list of all people from the API
   async GetPersonList() {
     const list = await GetAllPerson();
     this.state.personList = list;
-    console.log(this.state);
   }
 
+  // Does a search on the api based on the parameter 'text'
+  // Will try to search the person as an id first, before trying to find someone by name.
+  // PARAMS:
+  //     - text: The thing to search
   async onSearch(text) {
     // Reject if search is ongoing
     if (this.state.searching) {
@@ -105,7 +114,6 @@ class App extends React.Component {
         let foundList = this.state.personList.filter(e => e.name === text);
         if (foundList.length > 0) {
           let collectedData = await GetData(foundList[0].id);
-          console.log(collectedData);
 
           // Update data
           this.setState({ 
@@ -124,6 +132,7 @@ class App extends React.Component {
     }, 100);
   }
 
+  // Update the data to feed into the graph
   updateGraphData() {
     let graphData = this.state.graphData;
     // Check if current person not already exist in graph

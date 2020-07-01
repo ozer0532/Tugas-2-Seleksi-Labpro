@@ -10,8 +10,28 @@ const graphStartPoint = "1"
 export async function GetData (index) {
     const p = url.resolve(apiURL, index);
     const response = await axios.get(p);
-    console.log(response.data);
-    return response.data;
+    const data = FilterData(response.data);
+    // Remove duplicates
+    return data;
+}
+
+// Filters friend data to remove API mistakes
+async function FilterData (data) {
+    let returnVal = data;
+
+    // Filter duplicate friends https://stackoverflow.com/questions/2218999/remove-duplicates-from-an-array-of-objects-in-javascript
+    returnVal.payload.friends = returnVal.payload.friends.filter((entry, index) => {
+      let stringEntry = JSON.stringify(entry);
+      return index === returnVal.payload.friends.findIndex((item) => {
+        return stringEntry === JSON.stringify(item)
+      });
+    })
+
+    // Filter person = friend
+    returnVal.payload.friends = returnVal.payload.friends.filter((entry) => {
+        return entry.id != returnVal.payload.id;
+    })
+    return returnVal;
 }
 
 // Get all person from API
@@ -33,12 +53,10 @@ async function TraverseGraphLoop (id, currentList) {
     let list = currentList;
     if (response.status === 200)  {
         // Save name in currentList
-        // console.log(list.filter(e => e.id === id)[0]);
         currentList.push({id: id, name: response.payload.name});
         let friends = response.payload.friends;
         for (let i = 0; i < friends.length; i++) {
             list = await TraverseGraphLoop(friends[i].id, list);
-            // console.log (friends[i].id);
         }
     } else if (response.status === 404) {
         console.log("Missing: " + id);

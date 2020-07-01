@@ -6,6 +6,7 @@ import Paper from '@material-ui/core/Paper'
 
 import SearchIcon from '@material-ui/icons/Search'
 
+// CSS-like styling
 const styles = {
   paper: {
     display: "flex",
@@ -33,10 +34,12 @@ class SearchInput extends React.Component {
     this.onEnterPressed = this.onEnterPressed.bind(this);
   }
 
+  // Updates input value
   inputChange(event) {
     this.setState({ value: event.target.value });
   }
 
+  // Executes enter-press callback
   // https://stackoverflow.com/questions/43384039/how-to-get-input-textfield-values-when-enter-key-is-pressed-in-react-js
   onEnterPressed (event) {
     if (event.keyCode === 13) {
