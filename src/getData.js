@@ -8,8 +8,11 @@ const graphStartPoint = "1"
 // Get friends data from an index
 export async function GetData (index) {
     const p = url.resolve(apiURL, index);
-    const response = await axios.get(p);
-    const data = FilterData(response.data);
+    const response = await axios.get(p, {validateStatus:function(status) {return true;}});
+    let data = response.data;
+    if (response.status === 200) {
+        data = FilterData(response.data);
+    }
     // Remove duplicates
     return data;
 }
