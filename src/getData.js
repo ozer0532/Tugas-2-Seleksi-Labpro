@@ -1,8 +1,8 @@
 import url from 'url';
 import axios from 'axios';
 
-const apiURL = "https://avatar.labpro.dev/friends/"
-const graphStartPoint = "1"
+const apiURL = 'https://avatar.labpro.dev/friends/'
+const graphStartPoint = '1'
 
 // Based on: https://malcoded.com/posts/react-http-requests-axios/
 // Get friends data from an index
@@ -61,7 +61,7 @@ async function TraverseGraphLoop (id, currentList) {
       list = await TraverseGraphLoop(friends[i].id, list);
     }
   } else if (response.status === 404) {
-    console.log("Missing: " + id);
+    console.log('Missing: ' + id);
   }
 
   return list;

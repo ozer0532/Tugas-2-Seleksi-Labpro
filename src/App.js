@@ -12,8 +12,8 @@ import GraphDisplayer from './graphDisplayer';
 // CSS-like styling
 const styles = {
   root: {
-    display: "flex",
-    flexDirection: "column",
+    display: 'flex',
+    flexDirection: 'column',
     background: 'white',
     height: '100vh',
   },
@@ -45,15 +45,15 @@ class App extends React.Component {
     this.state = {
       personList: [],
       currentPerson: {
-        id: "0",
-        name: "-",
+        id: '0',
+        name: '-',
         friends: [],
       },
       searching: false,
       fail: false,
       graphData: {
         nodes: [
-          { id: "0", name: "-", x: -100, y: -100 }  // Dummy data so graph renderer wouldn't crash
+          { id: '0', name: '-', x: -100, y: -100 }  // Dummy data so graph renderer wouldn't crash
         ],
         links: [],
       }
@@ -187,6 +187,7 @@ class App extends React.Component {
               data = { this.state.currentPerson } 
               searching = { this.state.searching } 
               fail = { this.state.fail }
+              onSearch = { this.onSearch }
             />
           </Grid>
           <Grid item xs={12} md={8} lg={9} style = { styles.graphContainer }>

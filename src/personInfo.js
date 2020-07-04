@@ -9,7 +9,7 @@ function PersonInfo (props) {
         { props.data.name }
       </Typography>
       <Typography variant = { props.infoVariant }>
-        { "Id: " + props.data.id + " " }
+        { 'Id: ' + props.data.id + ' ' }
         Elemen: <i>{ props.data.element }</i>
       </Typography>
     </React.Fragment>

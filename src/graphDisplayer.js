@@ -7,12 +7,12 @@ import { Graph } from 'react-d3-graph';
 // CSS like styling
 const styles = {
   container: {
-    height: "100%",
-    overflow: "hidden",
+    height: '100%',
+    overflow: 'hidden',
   },
   graph: {
-    height: "100%",
-    width: "100%",
+    height: '100%',
+    width: '100%',
   }
 }
 
@@ -20,13 +20,13 @@ const styles = {
 var myConfig = {
   nodeHighlightBehavior: true,
   node: {
-    color: "lightgreen",
+    color: 'lightgreen',
     size: 120,
-    highlightStrokeColor: "blue",
-    labelProperty: "name",
+    highlightStrokeColor: 'blue',
+    labelProperty: 'name',
   },
   link: {
-    highlightColor: "lightblue",
+    highlightColor: 'lightblue',
   },
   height:800,
   directed: true,
@@ -69,8 +69,8 @@ class GraphDisplayer extends React.Component {
 
   // Runs the onClick property
   onClickNode (nodeId) {
-    if (typeof this.props.onClick === "function") {
-      console.log("yes");
+    if (typeof this.props.onClick === 'function') {
+      console.log('yes');
       this.props.onClick(nodeId);
     }
   };
@@ -84,7 +84,7 @@ class GraphDisplayer extends React.Component {
         <Graph 
           style={styles.graph}
           ref = {(elmt => {this.graph = elmt})} 
-          id="graph" // id is mandatory, if no id is defined rd3g will throw an error
+          id='graph' // id is mandatory, if no id is defined rd3g will throw an error
           data={{
             nodes: this.decorateGraphNodesWithInitialPositioning(this.props.data.nodes),
             links: this.props.data.links,

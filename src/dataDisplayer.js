@@ -28,18 +28,22 @@ class DataDisplayer extends React.Component {
   }
 
   RenderFriends () {
-    if (this.props.data.name === "-" || this.props.searching || this.props.fail) {
-      return "";
-    } else if ("friends" in this.props.data && this.props.data.friends.length > 0) {
+    if (this.props.data.name === '-' || this.props.searching || this.props.fail) {
+      return '';
+    } else if ('friends' in this.props.data && this.props.data.friends.length > 0) {
       return (
         <Box style = { styles.spaced } >
           <Typography variant='h6'> 
             Rekan: 
           </Typography>
-          
+
           { this.props.data.friends.map((entry, index) => {
             return (
-              <FriendInfoCard entry = { entry } index = { index } />
+              <FriendInfoCard
+                onSearch = { this.props.onSearch } 
+                entry = { entry } 
+                index = { index } 
+              />
             );
           })}
         </Box>
@@ -57,8 +61,8 @@ class DataDisplayer extends React.Component {
     return (
       <React.Fragment>
         <Typography
-          variant = "subtitle1"
-          color = "textSecondary"
+          variant = 'subtitle1'
+          color = 'textSecondary'
         >
           Hasil Pencarian:
         </Typography>
@@ -69,8 +73,8 @@ class DataDisplayer extends React.Component {
           : this.props.data.name === '-'
           ? <Typography variant='h5'> - </Typography>
           :<PersonInfo
-              headerVariant = "h5"
-              infoVariant = "body1"
+              headerVariant = 'h5'
+              infoVariant = 'body1'
               data = { this.props.data }
             />
         }

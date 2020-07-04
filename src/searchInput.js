@@ -9,16 +9,16 @@ import SearchIcon from '@material-ui/icons/Search'
 // CSS-like styling
 const styles = {
   paper: {
-    display: "flex",
+    display: 'flex',
     padding: '2px 4px',
     margin: '10px',
   },
   field: {
     flex: 1,
-    marginLeft: "10px",
+    marginLeft: '10px',
   },
   icon: {
-    padding: "10px",
+    padding: '10px',
   },
 };
 
@@ -27,7 +27,7 @@ class SearchInput extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      value: "",
+      value: '',
     }
 
     this.inputChange = this.inputChange.bind(this);
@@ -54,7 +54,7 @@ class SearchInput extends React.Component {
         {/* Input Field */}
         <InputBase
           style = { styles.field }
-          placeholder = "Pencarian - Masukkan nama lengkap atau id"
+          placeholder = 'Pencarian - Masukkan nama lengkap atau id'
           onChange = { this.inputChange }
           onKeyDown = { this.onEnterPressed }
         />
