@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "292672d0979f881f9628c4d7afe3354f",
+    "revision": "5d39bc15174fc46e4fa6a4848e3f8e04",
     "url": "/Tugas-2-Seleksi-Labpro/index.html"
   },
   {
-    "revision": "0c0d16aeb6b59ccfbfa8",
+    "revision": "bc29fcf4aeab24317b98",
     "url": "/Tugas-2-Seleksi-Labpro/static/css/main.5ecd60fb.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Tugas-2-Seleksi-Labpro/static/js/2.ca421a4f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "0c0d16aeb6b59ccfbfa8",
-    "url": "/Tugas-2-Seleksi-Labpro/static/js/main.c3e5c02c.chunk.js"
+    "revision": "bc29fcf4aeab24317b98",
+    "url": "/Tugas-2-Seleksi-Labpro/static/js/main.9edd1891.chunk.js"
   },
   {
     "revision": "33cac1138c0ce2c8add9",

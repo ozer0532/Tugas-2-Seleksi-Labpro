@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Tugas-2-Seleksi-Labpro/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/Tugas-2-Seleksi-Labpro/static/js/main.c3e5c02c.chunk.js",
-    "main.js.map": "/Tugas-2-Seleksi-Labpro/static/js/main.c3e5c02c.chunk.js.map",
+    "main.js": "/Tugas-2-Seleksi-Labpro/static/js/main.9edd1891.chunk.js",
+    "main.js.map": "/Tugas-2-Seleksi-Labpro/static/js/main.9edd1891.chunk.js.map",
     "runtime-main.js": "/Tugas-2-Seleksi-Labpro/static/js/runtime-main.051170c7.js",
     "runtime-main.js.map": "/Tugas-2-Seleksi-Labpro/static/js/runtime-main.051170c7.js.map",
     "static/js/2.ca421a4f.chunk.js": "/Tugas-2-Seleksi-Labpro/static/js/2.ca421a4f.chunk.js",
     "static/js/2.ca421a4f.chunk.js.map": "/Tugas-2-Seleksi-Labpro/static/js/2.ca421a4f.chunk.js.map",
     "index.html": "/Tugas-2-Seleksi-Labpro/index.html",
-    "precache-manifest.1bc0bf2362fe26ca9853bcb27bd65af2.js": "/Tugas-2-Seleksi-Labpro/precache-manifest.1bc0bf2362fe26ca9853bcb27bd65af2.js",
+    "precache-manifest.24cbb169dc028f4767c3796be3c4e9ab.js": "/Tugas-2-Seleksi-Labpro/precache-manifest.24cbb169dc028f4767c3796be3c4e9ab.js",
     "service-worker.js": "/Tugas-2-Seleksi-Labpro/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/Tugas-2-Seleksi-Labpro/static/css/main.5ecd60fb.chunk.css.map",
     "static/js/2.ca421a4f.chunk.js.LICENSE.txt": "/Tugas-2-Seleksi-Labpro/static/js/2.ca421a4f.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.051170c7.js",
     "static/js/2.ca421a4f.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.c3e5c02c.chunk.js"
+    "static/js/main.9edd1891.chunk.js"
   ]
 }

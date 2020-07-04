@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Tugas-2-Seleksi-Labpro/precache-manifest.1bc0bf2362fe26ca9853bcb27bd65af2.js"
+  "/Tugas-2-Seleksi-Labpro/precache-manifest.24cbb169dc028f4767c3796be3c4e9ab.js"
 );
 
 self.addEventListener('message', (event) => {
