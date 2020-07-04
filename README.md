@@ -9,6 +9,12 @@ Aplikasi dapat dilihat secara daring pada https://ozer0532.github.io/Tugas-2-Sel
 Untuk mencari orang, Anda dapat memasukkan id atau nama orang tersebut pada kolom pencarian di bagian atas, dan menekan *Enter*
 Untuk mendapatkan informasi lebih lanjut mengenai rekan orang yang dicari, Anda dapat memilih orang tersebut pada kartu di bagian samping layar atau pada graf
 
+Warna warna pada graf menunjukkan elemen milik orang tersebut.
+1. Air - Biru
+2. Bumi - Hijau
+3. Api - Merah
+4. Udara - Kuning
+
 ## Cara memasang pada sistem lokal
 Sebelum menjalankan aplikasi, pastikan node.js sudah terinstalasi pada perangkat Anda.
 Untuk menjalankan aplikasi pada komputer lokal, unduh atau klon repository ini pada perangkat Anda.
