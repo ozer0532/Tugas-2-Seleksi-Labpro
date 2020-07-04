@@ -14,21 +14,21 @@ const styles = {
 }
 
 function FriendInfoCard (props) {
-    return (
-        <Card style = { styles.card }>
-            <Typography 
-            variant = "subtitle2"
-            color="textSecondary"
-            >
-            { (props.index + 1) + '.' }
-            </Typography>
-            <PersonInfo
-            headerVariant = "h6"
-            infoVariant = "body1"
-            data = { props.entry }
-            />
-        </Card>
-    );
+  return (
+    <Card style = { styles.card }>
+      <Typography 
+      variant = "subtitle2"
+      color="textSecondary"
+      >
+      { (props.index + 1) + '.' }
+      </Typography>
+      <PersonInfo
+      headerVariant = "h6"
+      infoVariant = "body1"
+      data = { props.entry }
+      />
+    </Card>
+  );
 }
 
 export default FriendInfoCard;
