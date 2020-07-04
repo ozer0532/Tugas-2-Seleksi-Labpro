@@ -36,16 +36,12 @@ class DataDisplayer extends React.Component {
           <Typography variant='h6'> 
             Rekan: 
           </Typography>
-          {
-            this.props.data.friends.map((entry, index) => {
-              return (
-                <FriendInfoCard 
-                  entry = { entry }
-                  index = { index }
-                />
-              );
-            })
-          }
+          
+          { this.props.data.friends.map((entry, index) => {
+            return (
+              <FriendInfoCard entry = { entry } index = { index } />
+            );
+          })}
         </Box>
       );
     } else {
@@ -58,57 +54,28 @@ class DataDisplayer extends React.Component {
   }
 
   SearchText () {
-    if (this.props.searching) {
-      return (
-        <React.Fragment>
-          <Typography 
-            variant='subtitle1' 
-            color="textSecondary" 
-          >
-            Hasil Pencarian:
-          </Typography>
-          <Typography variant='h5'>
-            Mencari...
-          </Typography>
-          <Typography style = { styles.spaced }>
-            {/* Nothing */}
-          </Typography>
-        </React.Fragment>
-      )
-    } else if (this.props.fail) {
-      return (
-        <React.Fragment>
-          <Typography 
-            variant='subtitle1' 
-            color="textSecondary" 
-          >
-            Hasil Pencarian:
-          </Typography>
-          <Typography variant='h5'>
-            Orang tidak ditemukan
-          </Typography>
-          <Typography style = { styles.spaced }>
-            {/* Nothing */}
-          </Typography>
-        </React.Fragment>
-      );
-    } else {
-      return (
-        <React.Fragment>
-          <Typography 
-            variant='subtitle1' 
-            color="textSecondary" 
-          >
-            Hasil Pencarian:
-          </Typography>
-          <PersonInfo
-            headerVariant = "h5"
-            infoVariant = "body1"
-            data = { this.props.data }
-          />
-        </React.Fragment>
-      );
-    }
+    return (
+      <React.Fragment>
+        <Typography
+          variant = "subtitle1"
+          color = "textSecondary"
+        >
+          Hasil Pencarian:
+        </Typography>
+        {   this.props.searching
+          ? <Typography variant='h5'> Mencari... </Typography>
+          : this.props.fail
+          ? <Typography variant='h5'> Orang tidak ditemukan </Typography>
+          : this.props.data.name === '-'
+          ? <Typography variant='h5'> - </Typography>
+          :<PersonInfo
+              headerVariant = "h5"
+              infoVariant = "body1"
+              data = { this.props.data }
+            />
+        }
+      </React.Fragment>
+    );
   }
 
   render () {
