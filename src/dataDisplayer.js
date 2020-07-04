@@ -1,9 +1,13 @@
 import React from 'react';
 
 import Box from '@material-ui/core/Box'
-import Card from '@material-ui/core/Card'
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
+
+import FriendInfoCard from './friendInfoCard';
+import PersonInfo from './personInfo';
+
+// TODO: Select person when panel is clicked
 
 const styles = {
   mainContainer: {
@@ -12,25 +16,6 @@ const styles = {
   spaced: {
     marginTop: '15px',
   },
-  card: {
-    padding: '10px',
-    marginTop: '10px',
-    marginBottom: '10px',
-  },
-}
-
-function FilterFriends (friendsList) {
-  let filtered = friendsList
-
-  // Filter duplicates https://stackoverflow.com/questions/2218999/remove-duplicates-from-an-array-of-objects-in-javascript
-  filtered = filtered.filter((entry, index) => {
-    let stringEntry = JSON.stringify(entry);
-    return index === filtered.findIndex((item) => {
-      return stringEntry === JSON.stringify(item)
-    });
-  })
-
-  return filtered;
 }
 
 class DataDisplayer extends React.Component {
@@ -38,39 +23,8 @@ class DataDisplayer extends React.Component {
   constructor(props) {
     super(props);
 
-    this.RenderIdElements = this.RenderIdElements.bind(this);
-    this.RenderFriend = this.RenderFriend.bind(this);
     this.RenderFriends = this.RenderFriends.bind(this);
     this.SearchText = this.SearchText.bind(this);
-  }
-
-  RenderIdElements (props) {
-    if (props.data == null || props.data.name === "-" || this.props.searching) {
-      return "";
-    } else {
-      return (<React.Fragment> 
-          { "Id: " + props.data.id + " " }
-          Elemen: <i>{ props.data.element }</i>
-        </React.Fragment>
-      );
-    }
-  }
-
-  RenderFriend (props) {
-    return (
-      <Card style = { styles.card }>
-        <Typography 
-          variant = "subtitle2"
-          color="textSecondary"
-        >
-          { (props.index + 1) + '.' }
-        </Typography>
-        <Typography variant = 'h6'>
-          { props.entry.name }
-        </Typography>
-        <this.RenderIdElements data = { props.entry } />
-      </Card>
-    );
   }
 
   RenderFriends () {
@@ -83,14 +37,12 @@ class DataDisplayer extends React.Component {
             Rekan: 
           </Typography>
           {
-            FilterFriends(this.props.data.friends).map((entry, index) => {
+            this.props.data.friends.map((entry, index) => {
               return (
-                <Box key = { index }>
-                  <this.RenderFriend 
-                    entry = { entry } 
-                    index = { index } 
-                  />
-                </Box>
+                <FriendInfoCard 
+                  entry = { entry }
+                  index = { index }
+                />
               );
             })
           }
@@ -149,12 +101,11 @@ class DataDisplayer extends React.Component {
           >
             Hasil Pencarian:
           </Typography>
-          <Typography variant='h5'>
-            { this.props.data.name }
-          </Typography>
-          <Typography style = { styles.spaced }>
-            <this.RenderIdElements data = { this.props.data } />
-          </Typography>
+          <PersonInfo
+            headerVariant = "h5"
+            infoVariant = "body1"
+            data = { this.props.data }
+          />
         </React.Fragment>
       );
     }

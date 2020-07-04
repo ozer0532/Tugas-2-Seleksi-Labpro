@@ -1,4 +1,3 @@
-import PlatformPath from 'path';
 import url from 'url';
 import axios from 'axios';
 
@@ -29,7 +28,7 @@ async function FilterData (data) {
 
     // Filter person = friend
     returnVal.payload.friends = returnVal.payload.friends.filter((entry) => {
-        return entry.id != returnVal.payload.id;
+        return entry.id !== returnVal.payload.id;
     })
     return returnVal;
 }
