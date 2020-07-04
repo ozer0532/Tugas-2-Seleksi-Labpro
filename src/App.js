@@ -37,6 +37,19 @@ const styles = {
   }
 };
 
+function colorOfElement(element) {
+  if (element === "water") {
+    return "#4285F4";
+  } else if (element === "earth") {
+    return "#0F9D58";
+  } else if (element === "fire") {
+    return "#DB4437";
+  } else if (element === "air") {
+    return "#F4B400";
+  }
+  return "#d3d3d3";
+}
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -135,13 +148,16 @@ class App extends React.Component {
   // Update the data to feed into the graph
   updateGraphData() {
     let graphData = this.state.graphData;
+    let color = "#d3d3d3";
     // Check if current person not already exist in graph
     if (graphData.nodes.find( item => { return item.id === this.state.currentPerson.id } ) === undefined) {
 
       // Insert current person node
+      color = colorOfElement(this.state.currentPerson.element);
       graphData.nodes.push({
         id: this.state.currentPerson.id,
         name: this.state.currentPerson.name,
+        color: color,
       })
     }
 
@@ -150,9 +166,11 @@ class App extends React.Component {
       if (graphData.nodes.find( item => { return item.id === friend.id } ) === undefined) {
 
         // Insert friend node
+        color = colorOfElement(friend.element);
         graphData.nodes.push({
           id: friend.id,
           name: friend.name,
+          color: color,
         });
       }
 
