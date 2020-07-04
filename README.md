@@ -1,68 +1,34 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Suspect Expander App
+(Betul sekali, namanya sangat original 🙂)
 
-## Available Scripts
+Dibuat oleh Chokyi Ozer (13518107)
 
-In the project directory, you can run:
+Aplikasi dapat dilihat secara daring pada https://ozer0532.github.io/Tugas-2-Seleksi-Labpro/
 
-### `npm start`
+## Cara menggunakan
+Untuk mencari orang, Anda dapat memasukkan id atau nama orang tersebut pada kolom pencarian di bagian atas, dan menekan *Enter*
+Untuk mendapatkan informasi lebih lanjut mengenai rekan orang yang dicari, Anda dapat memilih orang tersebut pada kartu di bagian samping layar atau pada graf
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Cara memasang pada sistem lokal
+Sebelum menjalankan aplikasi, pastikan node.js sudah terinstalasi pada perangkat Anda.
+Untuk menjalankan aplikasi pada komputer lokal, unduh atau klon repository ini pada perangkat Anda.
+Kemudian jalankan kode berikut:
+```
+npm install
+npm start
+```
+Penjelajah Anda akan otomatis membuka aplikasi tersebut. Bila tidak, buka penjelajah secara manual dan buka `localhost:3000/Tugas-2-Seleksi-Labpro`.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Kakas yang dipakai
+1. React - Spek tugas.
+2. Material UI - Spek tugas.
+3. Material UI Icons - Bukan spek tugas, tapi sudah kompatibel dengan Material UI Core, jadi aku pakai ini.
+4. Axios - Tujuan kakas ini sebenarnya untuk memperbaiki gagal pemuatan aplikasi saat sudah di-*deploy*. (Padahal masalah sebenarnya bukan karena butuh axios, tapi sudah dipasang jadi malas cabut lagi :) )
+5. React-d3-graph - Aku pakai ini karena tampilannya menarik (sudah itu aja aslinya) dan bisa menyusun graf secara otomatis (walaupun berantakan). Komentar untuk kakas ini: karena cara susunnya pakai simulasi fisika, dengan jumlah simpul yang banyak, aplikasi bisa menjadi sangat (**sangat**) lambat, jadi disarankan disusunnya tanpa cara otomatis.
 
-### `npm test`
+## Review API
+Aku tidak tahu semua kecacatan API, tapi setidaknya aku tahu beberapa kekurangan ini:
+1. *Intense Loving Action*: Seseorang bisa memiliki dua teman yang sama (Misal A berteman dengan B, R, I, B, E)
+2. *Self Centered Person*: Seseorang bisa berteman dengan dirinya sendiri (Misal A berteman dengan B, A, K, E)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+API yang baik disarankan untuk tidak memiliki data yang duplikat atau tidak logis karena hal tersebut mempersulit pengguna API. Aku asumsi daftar orang ini dibangkitkan secara acak tanpa ada pengecekan sehingga ada data yang duplikat dan tidak logis. Saran untuk pembangkitan secara acak: sebaiknya dilakukan pengecekan data setelah pembangkitan agar tidak terdapat data yang tidak logis.
